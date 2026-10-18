@@ -10,7 +10,7 @@
     "prestart:mock": "node scripts/vendor.mjs",
     "predeploy": "node scripts/vendor.mjs",
     "start": "wrangler dev --port 8794 --ip 127.0.0.1",
-    "start:mock": "wrangler dev --port 8794 --ip 127.0.0.1 --var PAYPAL_MODE:mock",
+    "start:mock": "wrangler dev --port 8794 --ip 127.0.0.1 --var PAYPAL_MODE:mock --var LLM_MODE:stub",
     "deploy": "wrangler deploy",
     "test": "vitest run",
     "test:sandbox": "vitest run --config vitest.sandbox.config.ts",
