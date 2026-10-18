@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slotkeeper</title>
+  <link rel="stylesheet" href="/vendor/scheduler/fontawesome/css/fontawesome.css">
+  <link rel="stylesheet" href="/vendor/scheduler/fontawesome/css/solid.css">
+  <link rel="stylesheet" href="/vendor/scheduler/scheduler.css">
+  <link rel="stylesheet" href="/vendor/scheduler/stockholm-light.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Slotkeeper</h1>
+      <p id="venue" class="muted"></p>
+    </div>
+    <div id="badges"></div>
+    <div id="controls">
+      <span id="clock" class="muted"></span>
+      <span id="demo" hidden>
+        <button data-skip="31" title="Move the demo clock forward">+31 min</button>
+        <button data-skip="2880" title="Move the demo clock forward">+2 days</button>
+        <button id="reset">Reset demo</button>
+      </span>
+    </div>
+  </header>
+
+  <p id="notice" class="notice" hidden></p>
+
+  <form id="login" class="login" hidden>
+    <h2>Owner's desk</h2>
+    <label>Passcode <input id="passcode" type="password" autocomplete="current-password" required></label>
+    <button type="submit">Open the desk</button>
+  </form>
+
+  <main id="desk" hidden>
+    <section id="inbox-col">
+      <h2>Inbox <button id="run-all">Run agent on new</button></h2>
+      <div id="inbox"></div>
+      <form id="compose">
+        <select id="samples" hidden><option value="">Add a sample message…</option></select>
+        <textarea id="text" rows="3" placeholder="Paste a guest message. Do not enter real personal data."></textarea>
+        <button type="submit">Add to inbox</button>
+      </form>
+    </section>
+
+    <section id="board-col">
+      <h2>Schedule</h2>
+      <div id="days"></div>
+      <div id="board"></div>
+      <p class="legend">
+        <span class="chip held">held, waiting for deposit</span>
+        <span class="chip confirmed">confirmed</span>
+        <span class="muted" id="board-hint">drag a booking to move it; the agent checks the rules and rewrites the reply</span>
+      </p>
+      <h2>Bookings and payments</h2>
+      <table id="bookings">
+        <thead><tr><th>Booking</th><th>When</th><th>Guest</th><th>Deposit</th><th>Status</th><th>PayPal</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <h2>House rules the agent works within</h2>
+      <ul id="policy" class="muted"></ul>
+    </section>
+
+    <section id="log-col">
+      <h2>Activity</h2>
+      <ol id="log"></ol>
+    </section>
+  </main>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

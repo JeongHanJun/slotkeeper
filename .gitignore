@@ -1,0 +1,7 @@
+node_modules/
+.wrangler/
+.dev.vars
+dist/
+*.log
+# Bryntum trial bundle, copied from node_modules by scripts/vendor.mjs
+public/vendor/

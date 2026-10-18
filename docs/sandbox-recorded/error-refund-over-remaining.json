@@ -1,0 +1,20 @@
+{
+  "status": 422,
+  "body": {
+    "name": "UNPROCESSABLE_ENTITY",
+    "message": "The requested action could not be performed, semantically incorrect, or failed business validation.",
+    "debug_id": "<DEBUG_ID>",
+    "details": [
+      {
+        "issue": "REFUND_AMOUNT_EXCEEDED",
+        "description": "The refund amount must be less than or equal to the capture amount that has not yet been refunded."
+      }
+    ],
+    "links": [
+      {
+        "href": "https://developer.paypal.com/docs/api/payments/v2/#error-REFUND_AMOUNT_EXCEEDED",
+        "rel": "information_link"
+      }
+    ]
+  }
+}

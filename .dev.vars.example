@@ -1,0 +1,19 @@
+# Copy to .dev.vars (never commit it). Everything here is optional:
+# with no .dev.vars the app runs on the built-in PayPal mock and the rule-based parser.
+# Put nothing else in that file. The app needs no account e-mail or password.
+
+# PayPal sandbox (developer.paypal.com > Apps & Credentials > Sandbox)
+PAYPAL_MODE=sandbox
+PAYPAL_CLIENT_ID=
+PAYPAL_CLIENT_SECRET=
+# Id of the webhook registered for <public url>/api/webhooks/paypal (after deploying)
+PAYPAL_WEBHOOK_ID=
+
+# Passcode for the owner's desk. Not needed on 127.0.0.1; required anywhere else.
+DESK_PASSCODE=
+
+# Any OpenAI-compatible chat completions endpoint
+LLM_MODE=openai
+LLM_BASE_URL=
+LLM_API_KEY=
+LLM_MODEL=

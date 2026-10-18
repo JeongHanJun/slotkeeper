@@ -1,0 +1,72 @@
+{
+  "id": "<ID>",
+  "create_time": "<TIME>",
+  "resource_type": "checkout-order",
+  "event_type": "CHECKOUT.ORDER.APPROVED",
+  "summary": "An order has been approved by buyer",
+  "resource": {
+    "update_time": "<TIME>",
+    "create_time": "<TIME>",
+    "purchase_units": [
+      {
+        "reference_id": "BK-XXXXXX",
+        "amount": {
+          "currency_code": "USD",
+          "value": "100.00"
+        },
+        "payee": {
+          "email_address": "<EMAIL>"
+        },
+        "shipping": {
+          "method": "United States Postal Service",
+          "address": {
+            "address_line_1": "2211 N First Street",
+            "address_line_2": "Building 17",
+            "admin_area_2": "San Jose",
+            "admin_area_1": "CA",
+            "postal_code": "95131",
+            "country_code": "US"
+          }
+        }
+      }
+    ],
+    "links": [
+      {
+        "href": "https://api.sandbox.paypal.com/v2/checkout/orders/<ID>",
+        "rel": "self",
+        "method": "GET"
+      },
+      {
+        "href": "https://api.sandbox.paypal.com/v2/checkout/orders/<ID>/capture",
+        "method": "POST"
+      }
+    ],
+    "id": "<ID>",
+    "intent": "CAPTURE",
+    "payer": {
+      "name": {
+        "given_name": "<NAME>",
+        "surname": "<NAME>"
+      },
+      "email_address": "<EMAIL>",
+      "payer_id": "<PAYER_ID>"
+    },
+    "status": "APPROVED"
+  },
+  "links": [
+    {
+      "href": "https://api.sandbox.paypal.com/v1/notifications/webhooks-events/<ID>",
+      "rel": "self",
+      "method": "GET",
+      "encType": "application/json"
+    },
+    {
+      "href": "https://api.sandbox.paypal.com/v1/notifications/webhooks-events/<ID>/resend",
+      "rel": "resend",
+      "method": "POST",
+      "encType": "application/json"
+    }
+  ],
+  "event_version": "1.0",
+  "resource_version": "2.0"
+}

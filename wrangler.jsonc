@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "slotkeeper",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-27",
+  "assets": { "directory": "public", "binding": "ASSETS" },
+  // State lives in a Durable Object (SQLite-backed, available on the free plan).
+  // Nothing to create by hand: the first deploy applies the migration.
+  "durable_objects": { "bindings": [{ "name": "DESK", "class_name": "Desk" }] },
+  // Workers AI, used when LLM_MODE is "workers-ai". `wrangler dev` talks to the real service.
+  "ai": { "binding": "AI" },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Desk"] }],
+  "vars": {
+    // "mock" = built-in PayPal stand-in, no credentials. "sandbox" = real PayPal sandbox.
+    "PAYPAL_MODE": "sandbox",
+    // "stub" = rule-based parser and templates. "workers-ai" = the AI binding above.
+    // "openai" = any OpenAI-compatible endpoint (LLM_BASE_URL, LLM_API_KEY, LLM_MODEL).
+    "LLM_MODE": "workers-ai",
+    "LLM_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    // Daily cap in Workers AI neurons for this desk (the account gets 10,000 free a day).
+    // Past it the agent reads with the rules and answers with the templates.
+    "DAILY_NEURON_BUDGET": "2000",
+    // Neurons per million tokens for LLM_MODEL, from the Workers AI pricing page.
+    "LLM_NEURONS_PER_M_INPUT": "26364",
+    "LLM_NEURONS_PER_M_OUTPUT": "204545",
+    // Reset / clock-skip buttons for demos.
+    "DEMO_CONTROLS": "on"
+  }
+  // Secrets (wrangler secret put ...): DESK_PASSCODE, and for sandbox mode
+  // PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PAYPAL_WEBHOOK_ID.
+  // LLM_API_KEY if LLM_MODE=openai.
+}

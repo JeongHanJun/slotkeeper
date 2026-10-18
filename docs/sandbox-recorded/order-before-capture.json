@@ -1,0 +1,66 @@
+{
+  "id": "<ID>",
+  "intent": "CAPTURE",
+  "status": "APPROVED",
+  "payment_source": {
+    "paypal": {
+      "email_address": "<EMAIL>",
+      "account_id": "<ACCOUNT_ID>",
+      "account_status": "VERIFIED",
+      "name": {
+        "given_name": "<NAME>",
+        "surname": "<NAME>"
+      },
+      "address": {
+        "country_code": "KR"
+      }
+    }
+  },
+  "purchase_units": [
+    {
+      "reference_id": "BK-XXXXXX",
+      "amount": {
+        "currency_code": "USD",
+        "value": "24.00"
+      },
+      "payee": {
+        "email_address": "<EMAIL>",
+        "merchant_id": "<MERCHANT_ID>",
+        "display_data": {
+          "brand_name": "Dalhang Pottery Studio"
+        }
+      },
+      "description": "Wheel throwing class (deposit, sandbox test)",
+      "custom_id": "BK-XXXXXX"
+    }
+  ],
+  "payer": {
+    "name": {
+      "given_name": "<NAME>",
+      "surname": "<NAME>"
+    },
+    "email_address": "<EMAIL>",
+    "payer_id": "<PAYER_ID>",
+    "address": {
+      "country_code": "KR"
+    }
+  },
+  "create_time": "<TIME>",
+  "links": [
+    {
+      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/<ID>",
+      "rel": "self",
+      "method": "GET"
+    },
+    {
+      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/<ID>",
+      "rel": "update",
+      "method": "PATCH"
+    },
+    {
+      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/<ID>/capture",
+      "rel": "capture",
+      "method": "POST"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "slotkeeper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "vendor": "node scripts/vendor.mjs",
+    "prestart": "node scripts/vendor.mjs",
+    "prestart:mock": "node scripts/vendor.mjs",
+    "predeploy": "node scripts/vendor.mjs",
+    "start": "wrangler dev --port 8794 --ip 127.0.0.1",
+    "start:mock": "wrangler dev --port 8794 --ip 127.0.0.1 --var PAYPAL_MODE:mock",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "test:sandbox": "vitest run --config vitest.sandbox.config.ts",
+    "sandbox:order": "node scripts/sandbox-order.mjs",
+    "sandbox:settle": "node scripts/sandbox-settle.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261009.1",
+    "typescript": "^5.6.0",
+    "vitest": "^5.0.0",
+    "wrangler": "^4.0.0"
+  },
+  "dependencies": {
+    "@bryntum/scheduler": "npm:@bryntum/scheduler-trial@^7.3.7"
+  }
+}

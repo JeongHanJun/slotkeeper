@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sandbox order approved</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="checkout">
+  <main>
+    <h1>Sandbox order approved.</h1>
+    <p class="muted">This order was made by <code>npm run sandbox:order</code>, not by the desk. Finish it in the terminal:</p>
+    <pre id="next"></pre>
+  </main>
+  <script type="module">
+    const order = new URLSearchParams(location.search).get("token") ?? "<order id>";
+    document.getElementById("next").textContent = "npm run sandbox:settle -- " + order;
+  </script>
+</body>
+</html>

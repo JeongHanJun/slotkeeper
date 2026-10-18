@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booking</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="checkout">
+  <main>
+    <h1 id="title">Checking your booking…</h1>
+    <p id="detail" class="muted"></p>
+  </main>
+  <script type="module">
+    // The guest lands here after approving (or cancelling) the payment.
+    const params = new URLSearchParams(location.search);
+    const order = params.get("order");
+    const title = document.getElementById("title");
+    const detail = document.getElementById("detail");
+
+    async function check(triesLeft) {
+      const res = await fetch("/api/booking-status?order=" + encodeURIComponent(order));
+      const booking = res.ok ? await res.json() : { status: "unknown" };
+      if (booking.status === "confirmed") {
+        title.textContent = "You're booked. See you at the studio!";
+        detail.textContent = `Deposit ${booking.deposit} ${booking.currency} received. Reference ${booking.reference}.`;
+      } else if (booking.status === "waiting" && triesLeft > 0) {
+        // PayPal may still be finishing the payment.
+        title.textContent = booking.pending ? "PayPal is reviewing your payment…" : "Confirming your payment…";
+        setTimeout(() => check(triesLeft - 1), 3000);
+      } else if (booking.status === "waiting") {
+        title.textContent = "We have not received the payment yet.";
+        detail.textContent = `Your slot is still held. Reference ${booking.reference}. This page can be reloaded.`;
+      } else if (booking.status === "unavailable") {
+        title.textContent = "We could not confirm this booking.";
+        detail.textContent = "No payment was taken. Please reply to our message and we will sort it out.";
+      } else {
+        title.textContent = "Booking not found.";
+      }
+    }
+
+    if (params.has("cancelled")) {
+      title.textContent = "Payment cancelled.";
+      detail.textContent = "Nothing was charged. The link in our message works until the hold runs out.";
+    } else {
+      check(10);
+    }
+  </script>
+</body>
+</html>

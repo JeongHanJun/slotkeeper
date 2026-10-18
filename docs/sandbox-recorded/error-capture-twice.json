@@ -1,0 +1,21 @@
+{
+  "status": 422,
+  "body": {
+    "name": "UNPROCESSABLE_ENTITY",
+    "details": [
+      {
+        "issue": "ORDER_ALREADY_CAPTURED",
+        "description": "Order already captured.If 'intent=CAPTURE' only one capture per order is allowed."
+      }
+    ],
+    "message": "The requested action could not be performed, semantically incorrect, or failed business validation.",
+    "debug_id": "<DEBUG_ID>",
+    "links": [
+      {
+        "href": "https://developer.paypal.com/api/rest/reference/orders/v2/errors/#ORDER_ALREADY_CAPTURED",
+        "rel": "information_link",
+        "method": "GET"
+      }
+    ]
+  }
+}

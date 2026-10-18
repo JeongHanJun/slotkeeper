@@ -1,0 +1,42 @@
+{
+  "id": "<ID>",
+  "amount": {
+    "currency_code": "USD",
+    "value": "12.00"
+  },
+  "note_to_payer": "Cancelled booking (sandbox test)",
+  "seller_payable_breakdown": {
+    "gross_amount": {
+      "currency_code": "USD",
+      "value": "12.00"
+    },
+    "paypal_fee": {
+      "currency_code": "USD",
+      "value": "0.00"
+    },
+    "net_amount": {
+      "currency_code": "USD",
+      "value": "12.00"
+    },
+    "total_refunded_amount": {
+      "currency_code": "USD",
+      "value": "12.00"
+    }
+  },
+  "custom_id": "BK-XXXXXX",
+  "status": "COMPLETED",
+  "create_time": "<TIME>",
+  "update_time": "<TIME>",
+  "links": [
+    {
+      "href": "https://api.sandbox.paypal.com/v2/payments/refunds/<ID>",
+      "rel": "self",
+      "method": "GET"
+    },
+    {
+      "href": "https://api.sandbox.paypal.com/v2/payments/captures/<ID>",
+      "rel": "up",
+      "method": "GET"
+    }
+  ]
+}

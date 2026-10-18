@@ -1,0 +1,111 @@
+{
+  "id": "<ID>",
+  "intent": "CAPTURE",
+  "status": "COMPLETED",
+  "payment_source": {
+    "paypal": {
+      "email_address": "<EMAIL>",
+      "account_id": "<ACCOUNT_ID>",
+      "account_status": "VERIFIED",
+      "name": {
+        "given_name": "<NAME>",
+        "surname": "<NAME>"
+      },
+      "address": {
+        "country_code": "KR"
+      }
+    }
+  },
+  "purchase_units": [
+    {
+      "reference_id": "BK-XXXXXX",
+      "amount": {
+        "currency_code": "USD",
+        "value": "24.00"
+      },
+      "payee": {
+        "email_address": "<EMAIL>",
+        "merchant_id": "<MERCHANT_ID>",
+        "display_data": {
+          "brand_name": "Dalhang Pottery Studio"
+        }
+      },
+      "description": "Wheel throwing class (deposit, sandbox test)",
+      "custom_id": "BK-XXXXXX",
+      "payments": {
+        "captures": [
+          {
+            "id": "<ID>",
+            "status": "COMPLETED",
+            "amount": {
+              "currency_code": "USD",
+              "value": "24.00"
+            },
+            "final_capture": true,
+            "seller_protection": {
+              "status": "ELIGIBLE",
+              "dispute_categories": [
+                "ITEM_NOT_RECEIVED",
+                "UNAUTHORIZED_TRANSACTION"
+              ]
+            },
+            "seller_receivable_breakdown": {
+              "gross_amount": {
+                "currency_code": "USD",
+                "value": "24.00"
+              },
+              "paypal_fee": {
+                "currency_code": "USD",
+                "value": "1.12"
+              },
+              "net_amount": {
+                "currency_code": "USD",
+                "value": "22.88"
+              }
+            },
+            "custom_id": "BK-XXXXXX",
+            "links": [
+              {
+                "href": "https://api.sandbox.paypal.com/v2/payments/captures/<ID>",
+                "rel": "self",
+                "method": "GET"
+              },
+              {
+                "href": "https://api.sandbox.paypal.com/v2/payments/captures/<ID>/refund",
+                "rel": "refund",
+                "method": "POST"
+              },
+              {
+                "href": "https://api.sandbox.paypal.com/v2/checkout/orders/<ID>",
+                "rel": "up",
+                "method": "GET"
+              }
+            ],
+            "create_time": "<TIME>",
+            "update_time": "<TIME>"
+          }
+        ]
+      }
+    }
+  ],
+  "payer": {
+    "name": {
+      "given_name": "<NAME>",
+      "surname": "<NAME>"
+    },
+    "email_address": "<EMAIL>",
+    "payer_id": "<PAYER_ID>",
+    "address": {
+      "country_code": "KR"
+    }
+  },
+  "create_time": "<TIME>",
+  "update_time": "<TIME>",
+  "links": [
+    {
+      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/<ID>",
+      "rel": "self",
+      "method": "GET"
+    }
+  ]
+}
