@@ -43,7 +43,8 @@ export abstract class ModelLlm implements Llm {
     const system =
       "Rewrite the draft reply so it sounds like a friendly small studio owner, in the same " +
       "language as the draft. Keep every date, time, amount and link exactly as written. " +
-      "Add nothing that is not in the draft. Plain text, under 90 words.";
+      "Add nothing that is not in the draft. If the draft says the slot is held for the next N minutes, " +
+      "keep that meaning: it is how long the hold lasts, not how long the class is. Plain text, under 90 words.";
     try {
       const text = (await this.chat(system, template, false)).trim();
       const mustKeep = [facts.payUrl, facts.deposit, facts.total, facts.refund, facts.when].filter(

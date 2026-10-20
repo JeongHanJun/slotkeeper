@@ -112,6 +112,7 @@ summary { cursor: pointer; color: var(--muted); font-size: 12px; }
 #board { background: var(--card); border: 1px solid var(--line); border-radius: 4px; }
 #board .b-sch-event { font: 12px/1.3 inherit; font-family: inherit; color: var(--ink, #222); border-radius: 4px; padding: 3px 6px; display: flex; flex-direction: column; justify-content: center; }
 #board .b-sch-event span { font-size: 11px; color: var(--muted); }
+#board .b-sch-event, #board .b-sch-event span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; align-items: flex-start; text-align: left; }
 #board .b-sch-event.confirmed { background: #dcefe6; border: 1px solid var(--ok); }
 #board .b-sch-event.held {
   border: 1px dashed #a57c12;
